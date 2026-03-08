@@ -13,6 +13,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
 
 class ContactUsResource extends Resource
 {
@@ -30,6 +32,21 @@ class ContactUsResource extends Resource
     public static function table(Table $table): Table
     {
         return ContactUsTable::configure($table);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Section::make('Contact Details')
+                    ->components([
+                        TextEntry::make('name'),
+                        TextEntry::make('email'),
+                        TextEntry::make('phone'),
+                        TextEntry::make('message')
+                            ->columnSpanFull(),
+                    ])->columns(3),
+            ]);
     }
 
     public static function getRelations(): array

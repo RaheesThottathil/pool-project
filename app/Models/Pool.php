@@ -14,6 +14,7 @@ class Pool extends Model
         'location',
         'image',
         'price',
+        'category',
     ];
 
 }
