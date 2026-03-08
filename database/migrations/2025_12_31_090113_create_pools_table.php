@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('location');
             $table->string('image');
-            $table->string('price');            
+            $table->string('price');    
+            $table->enum('category', ['pool', 'cement', 'pond']);        
             $table->timestamps();
         });
     }

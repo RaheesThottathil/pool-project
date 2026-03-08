@@ -4,7 +4,7 @@ namespace App\Filament\Resources\ContactUs\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 
@@ -17,13 +17,16 @@ class ContactUsTable
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('email')->searchable(),
                 TextColumn::make('phone')->searchable(),
-                TextColumn::make('message')->searchable(),
+                TextColumn::make('message')
+                ->limit(20)
+                ->searchable(),
             ])
             ->filters([
                 //
             ])
             ->recordActions([
-                EditAction::make(),
+             ViewAction::make()
+             ->label(''),  
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
